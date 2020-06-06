@@ -16,15 +16,6 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="<?php echo base_url('index.php/Home')?>" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Home
-                <!-- <span class="right badge badge-danger">New</span> -->
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url('index.php/Schedules')?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Schedules
@@ -32,31 +23,17 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+
+          <li class="nav-item">
+            <a href="<?php echo base_url('index.php/Import')?>" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Master
-                <i class="fas fa-angle-left right"></i>
-                <!-- <span class="badge badge-info right">6</span> -->
+                Import
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url('index.php/Kapal')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kapal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Shift</p>
-                </a>
-              </li>
-            </ul>
           </li>
-         
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

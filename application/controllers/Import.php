@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kapal extends CI_Controller {
+class Import extends CI_Controller {
 
 	public function __construct()
 	{
@@ -10,7 +10,7 @@ class Kapal extends CI_Controller {
 			redirect(base_url('index.php/'));
 		}
 
-		$this->load->model('Auth/Auth_model', 'auth_model');
+		// $this->load->model('Auth/Auth_model', 'auth_model');
 	}
 
 	public function index()
@@ -19,9 +19,9 @@ class Kapal extends CI_Controller {
 		
 		$get_user = $this->session->userdata('sess_auth');
 		$data['user'] = $get_user['nama_user'];
-		$data['title'] = 'Master | Kapal';
-		$data['header'] = 'Data Kapal';
-		$data['content'] = 'pages/Kapal/index';
+		$data['title'] = 'Home | Import';
+		$data['header'] = 'Import Data .CSV';
+		$data['content'] = 'pages/Import/index';
 		$this->load->view('templates/main', $data);
 	}
 }
