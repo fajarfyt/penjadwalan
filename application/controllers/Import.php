@@ -51,7 +51,7 @@ class Import extends CI_Controller {
                                 $ex_file[$i] = explode(";", $file[$c]);
                                 if($i!=0){
                                     $data = [
-                                        'tanggal' => date("Y-m-d", strtotime($ex_file[$i][0]));,
+                                        'tanggal' => date("Y-m-d", strtotime($ex_file[$i][0])),
                                         'hour_meter' => $ex_file[$i][1],
                                         'breakdown' => $ex_file[$i][2],
                                         'shutdown' => $ex_file[$i][3],
