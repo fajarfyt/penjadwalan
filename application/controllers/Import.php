@@ -59,16 +59,12 @@ class Import extends CI_Controller {
                                         'label' => $ex_file[$i][5],
                                     ];
                                     echo "<pre>";
-                                    // var_dump($i);
                                     $this->sch->save($data);
-                                    
-                                    var_dump($data);
                                 }
                             }
 
                             $i++;
                         } 
-                        die();
                         fclose($handle);
                         redirect('index.php/import');
                     }
