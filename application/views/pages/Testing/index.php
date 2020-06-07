@@ -22,12 +22,15 @@
       <div class="table-responsive animated bounceInUp">
         <div class="card">
           <div class="card-body">
-            <form action="<?php echo site_url('Testing/add')?>" method="post"> 
+            <form action="<?php echo site_url('index.php/Testing/add')?>" method="post"> 
                 <div class ="row">
                     <div class="col-sm-3">
                         <div class="form-group">
                             <select  name="id_crane" class="form-control" required>
                                 <option value="" selected="selected">Pilih Crane : </option>
+                                <?php foreach($crane as $row){?>
+                                        <option value="<?php echo $row->id_crane;?>"><?php echo $row->desc_crane; ?></option>
+                                    <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -50,7 +53,7 @@
                   <div class="col-sm-3">
                         <div class="form-group">
                           <div class="input-group mb-3">
-                            <input type="number" name="hour_meter" class="form-control" placeholder="Hour Meter" required/>
+                            <input type="number" step="0.1" name="hour_meter" class="form-control" placeholder="Hour Meter" required/>
                             <div class="input-group-append">
                               <span class="input-group-text" id="basic-addon2">JAM</span>
                             </div>
@@ -61,7 +64,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                           <div class="input-group mb-3">
-                            <input type="number" name="breakdown" class="form-control" placeholder="Breakdown" required/>
+                            <input type="number" step="0.1" name="breakdown" class="form-control" placeholder="Breakdown" required/>
                             <div class="input-group-append">
                               <span class="input-group-text" id="basic-addon2">JAM</span>
                             </div>
@@ -72,7 +75,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                           <div class="input-group mb-3">
-                            <input type="number" name="shutdown" class="form-control" placeholder="Shutdown" required/>
+                            <input type="number" step="0.1" name="shutdown" class="form-control" placeholder="Shutdown" required/>
                             <div class="input-group-append">
                               <span class="input-group-text" id="basic-addon2">JAM</span>
                             </div>
@@ -81,9 +84,22 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <div class="form-group">
-                            <input type="text" name="bobot" class="form-control" placeholder="Bobot SP" />
-                        </div>
+                      <div class="form-group">
+                        <label>Bobot Sparepart (1 - 10) : </label>
+                        <input type="range" min="1" max="10" step="1" value="1" class="custom-range" name="bobot" list="tickmarks">
+                        <datalist id="tickmarks">
+                          <option value="1"></option>
+                          <option value="2"></option>
+                          <option value="3"></option>
+                          <option value="4"></option>
+                          <option value="5"></option>
+                          <option value="6"></option>
+                          <option value="7"></option>
+                          <option value="8"></option>
+                          <option value="9"></option>
+                          <option value="10"></option>
+                        </datalist>
+                      </div>
                     </div>
                 </div>
 

@@ -16,7 +16,7 @@ class Testing extends CI_Controller {
 	public function index()
 	{	
 		$this->load->helper('url');
-		
+		$data['crane'] = $this->sch->get_crane();
 		$get_user = $this->session->userdata('sess_auth');
 		$data['user'] = $get_user['nama_user'];
 		$data['title'] = 'Home | Testing';
@@ -25,5 +25,9 @@ class Testing extends CI_Controller {
 		$this->load->view('templates/main', $data);
     }
     
+    public function add()
+    {
+        var_dump($this->input->post('bobot'));die();
+    }
     
 }
