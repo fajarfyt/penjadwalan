@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_schedules extends CI_Model {
 
-	var $table = 'schedules_a';
+	var $table = 'training';
 
 	public function __construct()
 	{
@@ -41,107 +41,35 @@ class M_schedules extends CI_Model {
         return $this->db->affected_rows();
     }
  
-    public function delete_by_id($id)
+    public function delete($id)
     {
         $this->db->where('id_sch', $id);
         $this->db->delete($this->table);
     }
 
-   	public function get_crane() 
-   	{
-		$query = $this->db->query('
-			SELECT * 
-			FROM m_crane 
-		');
+    // public function upload_file($filename){
+	// 	$this->load->library('upload'); // Load librari upload
+		
+	// 	$config['upload_path'] = './csv/';
+	// 	$config['allowed_types'] = 'csv';
+	// 	$config['max_size']  = '2048';
+	// 	$config['overwrite'] = true;
+	// 	$config['file_name'] = $filename;
+	  
+	// 	$this->upload->initialize($config); // Load konfigurasi uploadnya
+	// 	if($this->upload->do_upload('file')){ // Lakukan upload dan Cek jika proses upload berhasil
+	// 	  // Jika berhasil :
+	// 	  $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
+	// 	  return $return;
+	// 	} else{
+	// 	  // Jika gagal :
+	// 	  $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+	// 	  return $return;
+	// 	}
+	// }
 
-		return $query->result();
+	public function insert_multiple($data){
+		$this->db->insert_batch('training', $data);
 	}
-
-	public function get_crane_check($id, $tgl) 
-   	{
-		$query = $this->db->query('
-			SELECT * 
-			FROM schedules_a 
-			WHERE (id_crane = $id AND date_sch = $tgl) 
-		');
-
-		return $query->result();
-	}
-
-	public function get_row($id) 
-   	{
-		$this->db->from($this->table);
-        $this->db->where('id_sch',$id);
-        $query = $this->db->get();
- 
-		return $query->row();
-	}
-
-	// -------------- D E T A I L ----------------------- //
-
-	public function get_data_dtl() {
-		$query = $this->db->query('
-			SELECT * 
-			FROM schedules_b 
-		');
-
-		return $query->result();
-	}
-
-	public function get_by_id_dtl($id)
-    {
-        $this->db->from('schedules_b');
-        $this->db->where('id_sch',$id);
-        $query = $this->db->get();
- 
-        return $query->row();
-    }
-
-	public function save_dtl($data)
-    {
-        $this->db->insert('schedules_b', $data);
-        return $this->db->insert_id();
-    }
- 
-    public function update_dtl($where, $data)
-    {
-        $this->db->update('schedules_b', $data, $where);
-        return $this->db->affected_rows();
-    }
- 
-    public function delete_by_id_dtl($id)
-    {
-        $this->db->where('id_sch_dtl', $id);
-        $this->db->delete($this->table);
-    }
-
-    public function get_kapal()
-    {
-    	$query = $this->db->query('
-			SELECT * 
-			FROM m_kapal  
-		');
-
-		return $query->result();
-    }
-
-    public function get_shift()
-    {
-    	$query = $this->db->query('
-			SELECT * 
-			FROM m_shift 
-		');
-
-		return $query->result();
-    }
-
-    public function get_status()
-    {
-    	$query = $this->db->query('
-			SELECT * 
-			FROM m_status 
-		');
-
-		return $query->result();
-    }
+	
 }
