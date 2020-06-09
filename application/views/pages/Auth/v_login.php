@@ -30,7 +30,7 @@
       <p class="login-box-msg" style="font-weight: 700;">LOGIN</p>
        <!-- <label style="text-align: center">LOGIN</label> -->
 
-      <form action="<?php echo base_url('index.php/Auth/login') ?>" method="post">
+      <form action="<?php echo base_url('Auth/login') ?>" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="username" placeholder="Nama Pengguna">
           <div class="input-group-append">

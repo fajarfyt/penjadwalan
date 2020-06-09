@@ -12,7 +12,7 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		if (is_logged_in()) {
-			redirect(base_url('index.php/home'));
+			redirect(base_url('home'));
 		}
 		return $this->load->view('pages/Auth/v_login');
 	}
@@ -27,15 +27,15 @@ class Auth extends CI_Controller {
 		// var_dump($login);die();
 		if (!empty($login)) {
 			$this->session->set_userdata('sess_auth', $login);
-			redirect(base_url('index.php/home'));
+			redirect(base_url('home'));
 		} else {
 			$this->session->set_flashdata('gagal', 'Username atau Password Salah');
-			redirect(base_url('index.php/'));
+			redirect(base_url('/'));
 		}
 	}
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('index.php/'));
+		redirect(base_url('/'));
 	}
 }
