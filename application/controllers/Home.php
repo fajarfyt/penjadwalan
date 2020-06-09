@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		if (is_logged_in() == false) {
-			redirect(base_url('index.php/'));
+			redirect(base_url('/'));
 		}
 
 		// $this->load->model('Auth/Auth_model', 'auth_model');

@@ -7,7 +7,7 @@ class Testing extends CI_Controller {
 	{
 		parent::__construct();
 		if (is_logged_in() == false) {
-			redirect(base_url('index.php/'));
+			redirect(base_url('/'));
 		}
 
         $this->load->model('M_schedules', 'sch');
