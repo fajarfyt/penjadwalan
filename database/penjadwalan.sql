@@ -89,7 +89,7 @@ CREATE TABLE `training` (
   `hour_meter` int(11) NOT NULL,
   `breakdown` int(11) NOT NULL,
   `shutdown` int(11) NOT NULL,
-  `sparepart` varchar(255) NOT NULL,
+  `sparepart` int(11) NOT NULL,
   `label` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,12 +98,12 @@ CREATE TABLE `training` (
 --
 
 INSERT INTO `training` (`id_training`, `tanggal`, `hour_meter`, `breakdown`, `shutdown`, `sparepart`, `label`) VALUES
-(1, '2020-01-06', 2, 2, 2, 'Baot', 'Berat'),
-(2, '2020-01-06', 1, 2, 2, 'Baot', 'Berat'),
-(3, '2020-01-06', 2, 1, 2, 'Baot', 'Berat'),
-(4, '2020-01-06', 1, 2, 1, 'Baot', 'Ringan'),
-(5, '2020-01-06', 2, 1, 1, 'Baot', 'Ringan'),
-(6, '2020-01-06', 2, 1, 1, 'Baot', 'Ringan');
+(1, '2020-01-06', 2, 2, 2, 3, 'Berat'),
+(2, '2020-01-06', 1, 2, 2, 2, 'Berat'),
+(3, '2020-01-06', 2, 1, 2, 3, 'Berat'),
+(4, '2020-01-06', 1, 2, 1, 4, 'Ringan'),
+(5, '2020-01-06', 2, 1, 1, 4, 'Ringan'),
+(6, '2020-01-06', 2, 1, 1, 3, 'Ringan');
 
 --
 -- Indexes for dumped tables

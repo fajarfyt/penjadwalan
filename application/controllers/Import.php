@@ -9,7 +9,7 @@ class Import extends CI_Controller {
 	{
 		parent::__construct();
 		if (is_logged_in() == false) {
-			redirect(base_url('index.php/'));
+			redirect(base_url('/'));
 		}
 
         $this->load->model('M_schedules', 'sch');
@@ -66,7 +66,7 @@ class Import extends CI_Controller {
                             $i++;
                         } 
                         fclose($handle);
-                        redirect('index.php/import');
+                        redirect(base_url('import'));
                     }
                 } else {
 					echo 'Format file tidak valid!';
