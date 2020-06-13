@@ -13,8 +13,8 @@ class M_schedules extends CI_Model {
 
 	public function get_data() {
 		$query = $this->db->query('
-			SELECT * 
-			FROM schedules_a 
+			SELECT hour_meter, breakdown, shutdown, sparepart, label
+			FROM training
 		');
 
 		return $query->result();
