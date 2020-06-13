@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jun 2020 pada 08.15
+-- Waktu pembuatan: 09 Jun 2020 pada 14.05
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.10
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `penjadwalan`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `m_crane`
+--
+
+CREATE TABLE `m_crane` (
+  `id_crane` varchar(20) NOT NULL,
+  `desc_crane` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `m_crane`
+--
+
+INSERT INTO `m_crane` (`id_crane`, `desc_crane`) VALUES
+('CR01', 'CRANE NO#01'),
+('CR03', 'CRANE NO#03');
 
 -- --------------------------------------------------------
 
@@ -45,6 +64,22 @@ INSERT INTO `m_user` (`id_user`, `nama_user`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `scheduler`
+--
+
+CREATE TABLE `scheduler` (
+  `id_sch` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `id_crane` int(11) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `sparepart_name` varchar(255) NOT NULL,
+  `durasi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `training`
 --
 
@@ -54,19 +89,43 @@ CREATE TABLE `training` (
   `hour_meter` int(11) NOT NULL,
   `breakdown` int(11) NOT NULL,
   `shutdown` int(11) NOT NULL,
-  `sparepart` varchar(255) NOT NULL,
+  `sparepart` int(11) NOT NULL,
   `label` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `training`
+--
+
+INSERT INTO `training` (`id_training`, `tanggal`, `hour_meter`, `breakdown`, `shutdown`, `sparepart`, `label`) VALUES
+(1, '2020-01-06', 2, 2, 2, 3, 'Berat'),
+(2, '2020-01-06', 1, 2, 2, 2, 'Berat'),
+(3, '2020-01-06', 2, 1, 2, 3, 'Berat'),
+(4, '2020-01-06', 1, 2, 1, 4, 'Ringan'),
+(5, '2020-01-06', 2, 1, 1, 4, 'Ringan'),
+(6, '2020-01-06', 2, 1, 1, 3, 'Ringan');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indeks untuk tabel `m_crane`
+--
+ALTER TABLE `m_crane`
+  ADD PRIMARY KEY (`id_crane`);
+
+--
 -- Indeks untuk tabel `m_user`
 --
 ALTER TABLE `m_user`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indeks untuk tabel `scheduler`
+--
+ALTER TABLE `scheduler`
+  ADD PRIMARY KEY (`id_sch`);
 
 --
 -- Indeks untuk tabel `training`
@@ -85,10 +144,16 @@ ALTER TABLE `m_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `scheduler`
+--
+ALTER TABLE `scheduler`
+  MODIFY `id_sch` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `training`
 --
 ALTER TABLE `training`
-  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
