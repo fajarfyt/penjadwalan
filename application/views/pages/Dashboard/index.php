@@ -27,9 +27,9 @@
                 <tr>
                   <th>Tanggal</th>
                   <th>Crane</th>
-                  <th>Deskripsi</th>
-                  <th>Label</th>
                   <th>Sparepart</th>
+                  <th>Deskripsi</th>
+                  <th>Bobot</th>
                   <th>Durasi</th>
                 </tr>
               </thead>
@@ -38,9 +38,9 @@
                     <tr>
                       <td><?= $k->tanggal; ?></td>
                       <td><?= $k->id_crane; ?></td>
+                      <td><?= $k->sparepart_name; ?></td>
                       <td><?= $k->deskripsi; ?></td>
                       <td><?= $k->label; ?></td>
-                      <td><?= $k->sparepart_name; ?></td>
                       <td><?= $k->durasi.' JAM'; ?></td>
                       </tr>
                   <?php } ?>

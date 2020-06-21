@@ -77,8 +77,8 @@
         </div>
         
         <div class="col-sm-6">
-            <p style="font-size:25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;  text-align: left; padding-top: 30px; padding-right: 30px; " >
-                Nama Sparepart : <?= $schedule['sparepart_name'];?>
+            <p style="font-size:25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;  text-align: right; padding-top: 30px; padding-right: 30px; " >
+                Tanggal : <?= $schedule['tanggal'];?>
             </p>
         </div>
     </div>
@@ -87,14 +87,14 @@
     <table id="table2" class="table table-hover">
         <thead>
         <tr>
-            <th>Tanggal</th>
+            <th>Sparepart</th>
             <th>Jenis Keursakan</th>
             <th>Durasi Perbaikan</th>
         </tr>
         </thead>
         <tbody>
             <tr>
-                <td><?= $schedule['tanggal']; ?></td>
+                <td><?= $schedule['sparepart_name']; ?></td>
                 <td><?= $schedule['label']; ?></td>
                 <td><?= $schedule['durasi'].' JAM'; ?></td>
             </tr>
