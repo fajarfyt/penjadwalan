@@ -43,32 +43,32 @@
               </form>
             <!-- </div> -->
             <br>
-            <table id="table" class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>Tanggal</th>
-                  <th>Hour Meter</th>
-                  <th>Breakdown</th>
-                  <th>Shutdown</th>
-                  <th>Sparepart</th>
-                  <th>Label</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                  <?php foreach($data_import as $k) { ?>
-                    <tr>
-                      <td><?= $k->tanggal; ?></td>
-                      <td><?= $k->hour_meter.' JAM'; ?></td>
-                      <td><?= $k->breakdown.' JAM'; ?></td>
-                      <td><?= $k->shutdown.' JAM'; ?></td>
-                      <td><?= $k->sparepart.' JAM'; ?></td>
-                      <td><?= $k->label; ?></td>
-                      </tr>
-                  <?php } ?>
-                
-              </tbody>
-            </table>
+              <table id="table" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Hour Meter</th>
+                    <th>Breakdown</th>
+                    <th>Shutdown</th>
+                    <th>Sparepart</th>
+                    <th>Label</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    <?php foreach($data_import as $k) { ?>
+                      <tr>
+                        <td><?= $k->tanggal; ?></td>
+                        <td><?= $k->hour_meter.' JAM'; ?></td>
+                        <td><?= $k->breakdown.' JAM'; ?></td>
+                        <td><?= $k->shutdown.' JAM'; ?></td>
+                        <td><?= $k->sparepart.' JAM'; ?></td>
+                        <td><?= $k->label; ?></td>
+                        </tr>
+                    <?php } ?>
+                  
+                </tbody>
+              </table>
           </div>
           <!-- /.card-body -->
         </div>

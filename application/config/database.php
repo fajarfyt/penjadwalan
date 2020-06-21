@@ -6,10 +6,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'jadwal-db',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'secret',
-	'database' => 'pesan_makanan',
+	'password' => '',
+	'database' => 'penjadwalan',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

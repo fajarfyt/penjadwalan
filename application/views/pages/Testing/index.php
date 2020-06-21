@@ -86,19 +86,7 @@
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label>Bobot Sparepart (1 - 10) : </label>
-                        <input type="range" min="1" max="10" step="1" value="1" class="custom-range" name="bobot" list="tickmarks">
-                        <datalist id="tickmarks">
-                          <option value="1"></option>
-                          <option value="2"></option>
-                          <option value="3"></option>
-                          <option value="4"></option>
-                          <option value="5"></option>
-                          <option value="6"></option>
-                          <option value="7"></option>
-                          <option value="8"></option>
-                          <option value="9"></option>
-                          <option value="10"></option>
-                        </datalist>
+                        <input type="range" min="1" max="10" step="1" value="1" class="custom-range" name="bobot" >
                       </div>
                     </div>
                 </div>
