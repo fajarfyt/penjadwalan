@@ -23,7 +23,8 @@ class Import extends CI_Controller {
 		$data['user'] = $get_user['nama_user'];
 		$data['title'] = 'Home | Import';
 		$data['header'] = 'Import Data .CSV';
-		$data['content'] = 'pages/Import/index';
+        $data['content'] = 'pages/Import/index';
+        $data['data_import'] = $this->sch->get_data();
 		$this->load->view('templates/main', $data);
     }
     

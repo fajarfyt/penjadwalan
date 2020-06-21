@@ -17,6 +17,15 @@ class M_testing extends CI_Model {
         return $this->db->insert_id();
     }
 
+    public function get_data() {
+		$query = $this->db->query('
+			SELECT * 
+			FROM scheduler 
+		');
+
+		return $query->result();
+	}
+
     public function getLabel($filters, $samples){
         /**
          * Proses query dimulai dari nesting paling dalam

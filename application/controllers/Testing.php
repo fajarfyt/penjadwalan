@@ -111,9 +111,22 @@ class Testing extends CI_Controller {
 
 		$this->sch->save($new_training);
 
-		return redirect(base_url('/'));
+		// return redirect(base_url('/testing'));
+		// $this->print();
+		$get_user = $this->session->userdata('sess_auth');
+		// $data['user'] = $get_user['nama_user'];
+		// $data['title'] = 'Home | Testing';
+		// $data['header'] = 'Testing';
+		// $data['content'] = 'pages/Testing/print';
+		$data['schedule'] = $schedule;
+		$this->load->view('print', $data);
 	}
 	
+	// public function print($schedule)
+	// {
+		
+	// }
+
 	private function svm($dataset, $new){
 		// Mapping features
 		$features = array_map(function($d){

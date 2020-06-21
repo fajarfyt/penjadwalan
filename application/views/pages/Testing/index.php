@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <select  name="id_crane" class="form-control" required>
                                 <option value="" selected="selected">Pilih Crane : </option>
-                                <?php foreach($crane as $row){?>
+                                    <?php foreach($crane as $row){?>
                                         <option value="<?php echo $row->id_crane;?>"><?php echo $row->desc_crane; ?></option>
                                     <?php } ?>
                             </select>

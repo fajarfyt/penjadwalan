@@ -22,3 +22,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <!-- Select2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
+
+<script type="text/javascript">
+
+    var table;
+    
+    $(document).ready(function() {
+    
+        //datepicker
+        $('.datepicker').datepicker({
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            todayHighlight: true,
+            orientation: "top auto",
+            // todayBtn: true,
+            todayHighlight: true,  
+        });
+    
+    });
+
+    function get() {
+        $.ajax({
+            url: "<?php echo site_url('testing/add')?>",
+            type: 'GET',
+            success: function(data) {
+                console.log(data);
+                window.location.href = "<?php echo site_url('testing/print/')?>" + data;
+            }
+        });
+    }
+</script>

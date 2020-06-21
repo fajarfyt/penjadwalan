@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 			redirect(base_url('/'));
 		}
 
-		// $this->load->model('Auth/Auth_model', 'auth_model');
+		$this->load->model('M_testing', 'test');
 	}
 
 	public function index()
@@ -20,8 +20,9 @@ class Home extends CI_Controller {
 		$get_user = $this->session->userdata('sess_auth');
 		$data['user'] = $get_user['nama_user'];
 		$data['title'] = 'MyApp | Home';
-		$data['header'] = 'Dashboard';
+		$data['header'] = 'Schedules';
 		$data['content'] = 'pages/Dashboard/index';
+		$data['schedules'] = $this->test->get_data();
 		$this->load->view('templates/main', $data);
 	}
 }
