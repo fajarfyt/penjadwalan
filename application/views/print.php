@@ -88,13 +88,13 @@
         <thead>
         <tr>
             <th>Sparepart</th>
-            <th>Jenis Keursakan</th>
+            <th>Durasi Perbaikan</th>
         </tr>
         </thead>
         <tbody>
             <tr>
                 <td><?= $schedule['sparepart_name']; ?></td>
-                <td><?= $schedule['label']; ?></td>
+                <td><?= $schedule['durasi'].' JAM'; ?></td>
             </tr>
         </tbody>
     </table>

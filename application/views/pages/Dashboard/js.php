@@ -60,7 +60,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: <?= $tanggal; ?>,
         datasets: [{
-            label: 'Berat',
+            label: '4 Jam',
             data: <?= $berat; ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -80,7 +80,7 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         }, {
-            label: 'Ringan',
+            label: '2 Jam',
             data: <?= $ringan; ?>,
             backgroundColor: [
                 // 'rgba(255, 99, 132, 0.2)',
