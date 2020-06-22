@@ -4,10 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // Load PHP-ML library
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-// Load SVM library
-use Phpml\Classification\SVC;
-use Phpml\SupportVectorMachine\Kernel;
-
 // Load KMeans library
 use Phpml\Clustering\Kmeans;
 
@@ -38,27 +34,6 @@ class Testing extends CI_Controller {
     
     public function add()
     {
-		/**
-		 * Input:
-		 * - id_crane
-		 * - tanggal
-		 * - sparepart_name
-		 * - hour_meter
-		 * - breakdown
-		 * - shutdown
-		 * - bobot
-		 * - deskripsi
-		 * 
-		 * Scheduler:
-		 * - id_sch
-		 * - tanggal
-		 * - id_crane
-		 * - deskripsi
-		 * - label
-		 * - sparepart_name
-		 * - durasi (ringan ? 2 : 4)
-		 */
-
 		// Mengambil dataset training di database
 		$dataset = $this->sch->get_data();
 		
@@ -70,22 +45,8 @@ class Testing extends CI_Controller {
 			intval($this->input->post('bobot'))
 		];
 
-		/** =======================================================================================================================
-		 * PILIHAN METODE
-		 * Hapus comment untuk memilih metode.
-		 * ========================================================================================================================
-		 */
-
-		/** Support Vector Machine (SVM) Classification */
-		// $result = $this->svm($dataset, $new);
-		
 		/** K-Means Clustering */
 		$result = $this->kmeans($dataset, $new);
-
-		/** =======================================================================================================================
-		 * ========================================================================================================================
-		 * ========================================================================================================================
-		 */
 
 		// Menyimpan hasil SVM ke tabel schedule
 		$schedule = [
@@ -111,44 +72,10 @@ class Testing extends CI_Controller {
 
 		$this->sch->save($new_training);
 
-		// return redirect(base_url('/testing'));
-		// $this->print();
 		$get_user = $this->session->userdata('sess_auth');
-		// $data['user'] = $get_user['nama_user'];
-		// $data['title'] = 'Home | Testing';
-		// $data['header'] = 'Testing';
-		// $data['content'] = 'pages/Testing/print';
+		
 		$data['schedule'] = $schedule;
 		$this->load->view('print', $data);
-	}
-	
-	// public function print($schedule)
-	// {
-		
-	// }
-
-	private function svm($dataset, $new){
-		// Mapping features
-		$features = array_map(function($d){
-			return [
-				intval($d->hour_meter), 
-				intval($d->breakdown), 
-				intval($d->shutdown), 
-				intval($d->sparepart) 
-			];
-		}, $dataset);
-
-		// Mapping labels
-		$labels = array_map(function($d){ return $d->label; }, $dataset);
-
-		// Train
-		$classifier = new SVC(Kernel::LINEAR, $cost = 1000);
-		$classifier->train($features, $labels);
-
-		// Predict
-		$result = $classifier->predict($new);
-
-		return $result;
 	}
 
 	private function kmeans($dataset, $new){
