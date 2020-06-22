@@ -138,6 +138,29 @@ class Testing extends CI_Controller {
 
 		// Mengembalikan label dari data baru saja.
 		return $final[$new_data_key]['label'];
+=======
+	private function svm($dataset, $new){
+		// Mapping features
+		$features = array_map(function($d){
+			return [
+				intval($d->hour_meter), 
+				intval($d->breakdown), 
+				intval($d->shutdown), 
+				intval($d->sparepart) 
+			];
+		}, $dataset);
+
+		// Mapping labels
+		$labels = array_map(function($d){ return $d->label; }, $dataset);
+
+		// Train
+		$classifier = new SVC(Kernel::LINEAR, $cost = 1000);
+		$classifier->train($features, $labels);
+
+		// Predict
+		$result = $classifier->predict($new);
+
+		return $result;
 	}
     
 }
