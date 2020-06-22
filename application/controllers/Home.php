@@ -23,6 +23,23 @@ class Home extends CI_Controller {
 		$data['header'] = 'Schedules';
 		$data['content'] = 'pages/Dashboard/index';
 		$data['schedules'] = $this->test->get_data();
+		
+		$get = $this->test->get_grafik();
+		$berat = [];
+		$ringan = [];
+		$tanggal = [];
+
+			foreach ($get as $k) {
+				$berat[] = $k->berat;
+				$ringan[] = $k->ringan;
+				$tanggal[] = $k->tanggal;
+			}
+
+		$data['berat'] = json_encode($berat);
+		$data['ringan'] = json_encode($ringan);
+		$data['tanggal'] = json_encode($tanggal);
+		// echo "<pre>";
+		// var_dump($data['berat']);die();
 		$this->load->view('templates/main', $data);
 	}
 }

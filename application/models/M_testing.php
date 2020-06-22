@@ -24,6 +24,18 @@ class M_testing extends CI_Model {
 		');
 
 		return $query->result();
+    }
+    
+    public function get_grafik() {
+		$query = $this->db->query('
+            SELECT a.tanggal, a.berat, b.ringan 
+            FROM (SELECT tanggal, count(label) as berat FROM scheduler WHERE label = "Berat" GROUP BY tanggal) as a,  
+            (SELECT tanggal, count(label) as ringan FROM scheduler WHERE label = "Ringan" GROUP BY tanggal) as b 
+            GROUP BY a.tanggal 
+            ORDER BY a.tanggal ASC
+		');
+
+		return $query->result();
 	}
 
     public function getLabel($filters, $samples){

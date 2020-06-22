@@ -22,30 +22,41 @@
       <div class="table-responsive animated bounceInUp">
         <div class="card">
           <div class="card-body">
-            <table id="table" class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>Tanggal</th>
-                  <th>Crane</th>
-                  <th>Sparepart</th>
-                  <th>Deskripsi</th>
-                  <th>Bobot</th>
-                  <th>Durasi</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <?php foreach($schedules as $k) { ?>
+            <div class="row">
+              <div class="col-12">
+                <!-- <div id="container" style="width: 75%;"> -->
+                  <canvas id="mychart"></canvas>
+                <!-- </div> -->
+                <br>
+              </div>
+              <div class="col-12">
+                <table id="table" class="table table-bordered table-hover">
+                  <thead>
                     <tr>
-                      <td><?= $k->tanggal; ?></td>
-                      <td><?= $k->id_crane; ?></td>
-                      <td><?= $k->sparepart_name; ?></td>
-                      <td><?= $k->deskripsi; ?></td>
-                      <td><?= $k->label; ?></td>
-                      <td><?= $k->durasi.' JAM'; ?></td>
-                      </tr>
-                  <?php } ?>
-              </tbody>
-            </table>
+                      <th>Tanggal</th>
+                      <th>Crane</th>
+                      <th>Sparepart</th>
+                      <th>Deskripsi</th>
+                      <th>Bobot</th>
+                      <th>Durasi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <?php foreach($schedules as $k) { ?>
+                        <tr>
+                          <td><?= $k->tanggal; ?></td>
+                          <td><?= $k->id_crane; ?></td>
+                          <td><?= $k->sparepart_name; ?></td>
+                          <td><?= $k->deskripsi; ?></td>
+                          <td><?= $k->label; ?></td>
+                          <td><?= $k->durasi.' JAM'; ?></td>
+                          </tr>
+                      <?php } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
           </div>
           <!-- /.card-body -->
         </div>
@@ -58,4 +69,4 @@
   <!-- /.row -->
 </section>
 
-<?php $this->load->view('pages/Import/js.php'); ?>
+<?php $this->load->view('pages/Dashboard/js.php'); ?>
