@@ -8,9 +8,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Phpml\Classification\SVC;
 use Phpml\SupportVectorMachine\Kernel;
 
-// Load KMeans library
-use Phpml\Clustering\Kmeans;
-
 class Testing extends CI_Controller {
 
 	public function __construct()
