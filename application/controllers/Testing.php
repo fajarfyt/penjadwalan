@@ -38,27 +38,6 @@ class Testing extends CI_Controller {
     
     public function add()
     {
-		/**
-		 * Input:
-		 * - id_crane
-		 * - tanggal
-		 * - sparepart_name
-		 * - hour_meter
-		 * - breakdown
-		 * - shutdown
-		 * - bobot
-		 * - deskripsi
-		 * 
-		 * Scheduler:
-		 * - id_sch
-		 * - tanggal
-		 * - id_crane
-		 * - deskripsi
-		 * - label
-		 * - sparepart_name
-		 * - durasi (ringan ? 2 : 4)
-		 */
-
 		// Mengambil dataset training di database
 		$dataset = $this->sch->get_data();
 		
@@ -70,22 +49,8 @@ class Testing extends CI_Controller {
 			intval($this->input->post('bobot'))
 		];
 
-		/** =======================================================================================================================
-		 * PILIHAN METODE
-		 * Hapus comment untuk memilih metode.
-		 * ========================================================================================================================
-		 */
-
 		/** Support Vector Machine (SVM) Classification */
-		// $result = $this->svm($dataset, $new);
-		
-		/** K-Means Clustering */
-		$result = $this->kmeans($dataset, $new);
-
-		/** =======================================================================================================================
-		 * ========================================================================================================================
-		 * ========================================================================================================================
-		 */
+		$result = $this->svm($dataset, $new);
 
 		// Menyimpan hasil SVM ke tabel schedule
 		$schedule = [
@@ -111,21 +76,11 @@ class Testing extends CI_Controller {
 
 		$this->sch->save($new_training);
 
-		// return redirect(base_url('/testing'));
-		// $this->print();
 		$get_user = $this->session->userdata('sess_auth');
-		// $data['user'] = $get_user['nama_user'];
-		// $data['title'] = 'Home | Testing';
-		// $data['header'] = 'Testing';
-		// $data['content'] = 'pages/Testing/print';
+		
 		$data['schedule'] = $schedule;
 		$this->load->view('print', $data);
 	}
-	
-	// public function print($schedule)
-	// {
-		
-	// }
 
 	private function svm($dataset, $new){
 		// Mapping features
@@ -149,68 +104,6 @@ class Testing extends CI_Controller {
 		$result = $classifier->predict($new);
 
 		return $result;
-	}
-
-	private function kmeans($dataset, $new){
-		// Mapping features
-		$features = [];
-
-		foreach ($dataset as $key => $value) {
-			$features["data-$key"] = [
-				intval($value->hour_meter), 
-				intval($value->breakdown), 
-				intval($value->shutdown), 
-				intval($value->sparepart) 
-			];
-		}
-
-		// Push data baru ke dataset features
-		$new_data_key = "data-".count($features);
-		$features[$new_data_key] = $new;
-
-		// Cluster
-		$kmeans = new KMeans(2);
-		$result = $kmeans->cluster($features);
-
-		/**
-		 * Karena K-means disini hanya membagi dataset menjadi 2 cluster dan tidak ada keterangan label (berat/ringan),
-		 * maka dapat diakali dengan cara mencocokkan label dari dataset pada database.
-		 * Dari sini akan diambil beberapa sample data untuk kemudian dilakukan pencocokan label.
-		 * Dan karena pada satu cluster dapat memungkinkan memiliki 2 macam label, maka diambil yang paling banyak atau major.
-		 * 
-		 * Untuk banyaknya sample data, dianjurkan untuk dinaikkan nilainya jika jumlah data training banyak.
-		 */
-		$cluster_key = 0;
-		$samples = 3;
-
-		$filters = array_slice(
-						array_map(function($f){
-							return "(hour_meter = {$f[0]} and breakdown = {$f[1]} and shutdown = {$f[2]} and sparepart = {$f[3]})";
-						}, $result[$cluster_key]), 
-					0, $samples);
-		
-		$str_filters = implode(' or ', $filters);
-
-		/**
-		 * Query penentu label terdapat pada model M_testing pada function bernama getLabel().
-		 * Setelah label pada satu cluster diketahui, maka cluster yang lain sudah pasti label oposisinya.
-		 */
-		$label = $this->testing->getLabel($str_filters, $samples);
-		$alt_label = $label == 'Berat' ? 'Ringan' : 'Berat';
-
-		// Memasukkan semua data ke satu array. Setiap data akan ditambahkan label masing-masing.
-		$final = [];
-
-		foreach ($result as $index => $data) {
-			foreach ($data as $key => $d) {
-				$d['label'] = $index == $cluster_key ? $label : $alt_label;
-
-				$final[$key] = $d;
-			}
-		}
-
-		// Mengembalikan label dari data baru saja.
-		return $final[$new_data_key]['label'];
 	}
     
 }
