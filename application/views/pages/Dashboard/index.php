@@ -38,7 +38,6 @@
                       <th>Sparepart</th>
                       <th>Deskripsi</th>
                       <th>Bobot</th>
-                      <th>Durasi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -49,7 +48,6 @@
                           <td><?= $k->sparepart_name; ?></td>
                           <td><?= $k->deskripsi; ?></td>
                           <td><?= $k->label; ?></td>
-                          <td><?= $k->durasi.' JAM'; ?></td>
                           </tr>
                       <?php } ?>
                   </tbody>
