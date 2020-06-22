@@ -37,7 +37,6 @@
                       <th>Crane</th>
                       <th>Sparepart</th>
                       <th>Deskripsi</th>
-                      <th>Bobot</th>
                       <th>Durasi</th>
                     </tr>
                   </thead>
@@ -48,7 +47,6 @@
                           <td><?= $k->id_crane; ?></td>
                           <td><?= $k->sparepart_name; ?></td>
                           <td><?= $k->deskripsi; ?></td>
-                          <td><?= $k->label; ?></td>
                           <td><?= $k->durasi.' JAM'; ?></td>
                           </tr>
                       <?php } ?>
