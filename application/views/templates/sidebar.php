@@ -15,7 +15,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?php echo base_url('index.php/Home')?>" class="nav-link active">
+            <a href="<?php echo base_url('index.php/Home')?>" class="nav-link <?php echo $header=='Schedules' ? 'active': ''; ?>">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Schedules
@@ -25,7 +25,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url('index.php/Import')?>" class="nav-link">
+            <a href="<?php echo base_url('index.php/Import')?>" class="nav-link <?php echo $header=='Import Data .CSV' ? 'active': ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Import
@@ -35,7 +35,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="<?php echo base_url('index.php/Testing')?>" class="nav-link">
+            <a href="<?php echo base_url('index.php/Testing')?>" class="nav-link <?php echo $header=='Testing' ? 'active': ''; ?>">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Testing
