@@ -27,13 +27,12 @@ class M_testing extends CI_Model {
     }
     
     public function get_grafik() {
-		$query = $this->db->query('
-            SELECT a.tanggal, a.berat, b.ringan 
-            FROM (SELECT tanggal, count(label) as berat FROM scheduler WHERE label = "Berat" GROUP BY tanggal) as a,  
-            (SELECT tanggal, count(label) as ringan FROM scheduler WHERE label = "Ringan" GROUP BY tanggal) as b 
-            GROUP BY a.tanggal 
-            ORDER BY a.tanggal ASC
-		');
+		$query = $this->db->query("
+            SELECT tanggal, count(case when label = 'Berat' then label end) berat, count(case when label = 'Ringan' then label end) ringan
+            FROM scheduler
+            GROUP BY tanggal
+            ORDER BY tanggal ASC
+		");
 
 		return $query->result();
 	}
