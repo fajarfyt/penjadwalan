@@ -138,7 +138,8 @@ class Testing extends CI_Controller {
 
 		// Mengembalikan label dari data baru saja.
 		return $final[$new_data_key]['label'];
-=======
+	}
+	
 	private function svm($dataset, $new){
 		// Mapping features
 		$features = array_map(function($d){
