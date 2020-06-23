@@ -28,7 +28,7 @@ class M_testing extends CI_Model {
     
     public function get_grafik() {
 		$query = $this->db->query("
-            SELECT tanggal, count(case when label = 'Berat' then label end) Berat, count(case when label = 'Ringan' then label end) Ringan
+            SELECT tanggal, count(case when label = 'Berat' then label end) berat, count(case when label = 'Ringan' then label end) ringan
             FROM scheduler
             GROUP BY tanggal
             ORDER BY tanggal ASC
